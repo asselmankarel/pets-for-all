@@ -10,11 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_11_09_133844) do
+=======
+ActiveRecord::Schema.define(version: 2020_11_09_135011) do
+>>>>>>> 33a671a051d6a8d6bc16ca1d5a93d0e17ff9a5c4
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
+=======
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "pet_id", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pet_id"], name: "index_bookings_on_pet_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+>>>>>>> 33a671a051d6a8d6bc16ca1d5a93d0e17ff9a5c4
   create_table "pets", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
@@ -45,5 +63,10 @@ ActiveRecord::Schema.define(version: 2020_11_09_133844) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+<<<<<<< HEAD
+=======
+  add_foreign_key "bookings", "pets"
+  add_foreign_key "bookings", "users"
+>>>>>>> 33a671a051d6a8d6bc16ca1d5a93d0e17ff9a5c4
   add_foreign_key "pets", "users"
 end
