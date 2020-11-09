@@ -9,7 +9,9 @@
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
-    "turbolinks": "^5.2.0"
+    "select2": "^4.0.13",
+    "turbolinks": "^5.2.0",
+    "webpacker": "^4.6.0"
   },
   "version": "0.1.0",
   "devDependencies": {
