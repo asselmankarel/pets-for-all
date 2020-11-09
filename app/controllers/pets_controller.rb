@@ -1,4 +1,6 @@
 class PetsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @pets = Pet.all
   end
@@ -9,6 +11,7 @@ class PetsController < ApplicationController
 
   def create
     @pet = Pet.new(pet_params)
+    @pet.user = current_user
     if @pet.save!
       redirect_to pet_path(@pet)
     else
