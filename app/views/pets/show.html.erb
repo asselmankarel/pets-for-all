@@ -1,0 +1,12 @@
+<h1><%= @pet.name %> <%= link_to "edit", edit_pet_path(@pet)  %></h1>
+
+<%= link_to "Back to all pets", pets_path %>
+
+<p>Gender: <%= @pet.gender %></p>
+<p>Date of birth: <%= @pet.birth_date %></p>
+<p>Address: <%= @pet.address %></p>
+<p>Pet type: <%= @pet.category %></p>
+<p>Price per day: <%= @pet.price_per_day %></p>
+<p>Availability: <%= @pet.available %></p>
+<h2>About <%= @pet.name %>:</h2>
+<p><%= @pet.description %></p>
