@@ -12,7 +12,7 @@
         <p>From: <%= booking.start_date %></p>
         <p>To: <%= booking.end_date %> </p>
         <%= link_to 'Edit', edit_pet_booking_path(booking.pet, booking) %>
-        <%= link_to 'Delete', booking_path(booking), method: :destroy, data: { confirm: 'Are you sure?' }%>
+        <%= link_to 'Delete', booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' }%>
       </div>
     </li>
   <% end %>
