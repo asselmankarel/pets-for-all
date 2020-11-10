@@ -1,7 +1,9 @@
 <h1>All pets</h1>
 
 <ul>
-  <% @pets.each do |pet| %>  
+  <% @pets.each do |pet| %>
     <li><%= link_to pet.name, pet_path(pet) %></li>
   <% end %>
 </ul>
+
+<%= render 'devise/shared/login' %>
