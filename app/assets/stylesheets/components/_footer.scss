@@ -25,3 +25,9 @@
 .w200 {
   width: 120px;
 }
+
+@media screen and(max-width:579px) {
+  .footer {
+    height: 200px;
+  }
+}
