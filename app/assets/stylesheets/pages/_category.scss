@@ -1,0 +1,11 @@
+#other-pet {
+  background-color: #D2D7D9;
+}
+
+.pet-link {
+  color: #444;
+  &:hover {
+    text-decoration: none;
+    color: #111;
+  }
+}
