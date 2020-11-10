@@ -1,5 +1,5 @@
 <h1><%= @pet.name %> <%= link_to "edit", edit_pet_path(@pet) if @pet.user_id == current_user.id %>
-  <%= link_to "Remove #{@pet.name}", pet_path(@pet), method: :delete, data: {comfirm: "Are you sure?"} if @pet.user_id == current_user.id %></h1>
+  <%= link_to "Remove #{@pet.name}", pet_path(@pet), method: :delete, data: {confirm: "Are you sure?"} if @pet.user_id == current_user.id %></h1>
 
 <%= link_to "Back to all pets", pets_path %>
 
