@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @pet = @booking.pet
     if @booking.save
-      redirect_to pet_booking @pet, @booking
+      redirect_to pet_booking_path @pet, @booking
     else
       render :new
     end
@@ -34,6 +34,7 @@ class BookingsController < ApplicationController
 
   def edit
     @booking = Booking.find(params[:id])
+    @pet = @booking.pet
   end
 
   def update
