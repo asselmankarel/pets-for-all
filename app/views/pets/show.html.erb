@@ -1,49 +1,50 @@
-<%= link_to "Back to all pets", pets_path %>
-
-<div class="d-flex">
-  <div class="p-4">
-<% if @pet.photo.attached? %>
-  <%= cl_image_tag @pet.photo.key, height: 350, width: 350, crop: :fill, class: "rounded-circle" %>
-<% end %>
-  </div>
-  <div class="p-4">
-    <p>Name: </p>
-    <p>Gender: </p>
-    <p>Date of birth: </p>
-    <p>Address: </p>
-    <p>Pet type: </p>
-    <p>Price per day: </p>
-    <p>Availability: </p>
-    <p>About: </p>
-  </div>
-  <div class="p-4">
-    <p><%= @pet.name %></p>
-    <p><%= @pet.gender %></p>
-    <p><%= @pet.birth_date %></p>
-    <p><%= @pet.address %></p>
-    <p><%= @pet.category %></p>
-    <p><%= @pet.price_per_day %></p>
-    <p><%= @pet.available %></p>
-    <p><%= @pet.description %></p>
-  </div>
-</div>
-<div class="d-flex extra-pics">
-  <% 4.times do %>
-    <%= cl_image_tag @pet.photo.key, height: 150, width: 150, crop: :fill, class: "rounded-circle m-4" if @pet.photo.attached? %>
+<div class="container">
+  <%= link_to "Back to all pets", pets_path %>
+  <div class="d-flex">
+    <div class="p-4">
+  <% if @pet.photo.attached? %>
+    <%= cl_image_tag @pet.photo.key, height: 350, width: 350, crop: :fill, class: "rounded-circle" %>
   <% end %>
-  <%= link_to "edit", edit_pet_path(@pet), class: "btn m-4" if @pet.user_id == current_user.id %>
-  <%= link_to "Remove", pet_path(@pet), {class: "btn m-4", method: :delete, data: {confirm: "Are you sure?"}} if @pet.user_id == current_user.id %>
-  <%= link_to "Mark a booking", new_pet_booking_path(@pet), class: "btn m-4" if @pet.user_id != current_user.id %>
-</div>
-<section id="other-pet" class="py-4">
-  <h2>You may also want to rent these bois :</h2>
-  <div class="d-flex justify-content-around">
-    <% 3.times do %>
-      <% category_sample = Pet::CATEGORIES.sample %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(category_sample) %>')">
-      <%= category_sample %>
-      </div>
-    <% end %>
+    </div>
+    <div class="p-4">
+      <p>Name: </p>
+      <p>Gender: </p>
+      <p>Date of birth: </p>
+      <p>Address: </p>
+      <p>Pet type: </p>
+      <p>Price per day: </p>
+      <p>Availability: </p>
+      <p>About: </p>
+    </div>
+    <div class="p-4">
+      <p><%= @pet.name %></p>
+      <p><%= @pet.gender %></p>
+      <p><%= @pet.birth_date %></p>
+      <p><%= @pet.address %></p>
+      <p><%= @pet.category %></p>
+      <p><%= @pet.price_per_day %></p>
+      <p><%= @pet.available %></p>
+      <p><%= @pet.description %></p>
+    </div>
   </div>
-</section>
-<%= render 'devise/shared/login' %>
+  <div class="d-flex extra-pics">
+    <% 4.times do %>
+      <%= cl_image_tag @pet.photo.key, height: 150, width: 150, crop: :fill, class: "rounded-circle m-4" if @pet.photo.attached? %>
+    <% end %>
+    <%= link_to "edit", edit_pet_path(@pet), class: "btn m-4" if @pet.user_id == current_user.id %>
+    <%= link_to "Remove", pet_path(@pet), {class: "btn m-4", method: :delete, data: {confirm: "Are you sure?"}} if @pet.user_id == current_user.id %>
+    <%= link_to "Mark a booking", new_pet_booking_path(@pet), class: "btn m-4" if @pet.user_id != current_user.id %>
+  </div>
+  <section id="other-pet" class="py-4">
+    <h2>You may also want to rent these bois :</h2>
+    <div class="d-flex justify-content-around">
+      <% 3.times do %>
+        <% category_sample = Pet::CATEGORIES.sample %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(category_sample) %>')">
+        <%= category_sample %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+  <%= render 'devise/shared/login' %>
+</div>
