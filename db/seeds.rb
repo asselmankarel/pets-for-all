@@ -10,7 +10,7 @@ categories = %i[dog cat horse reptile rodent dragon unicorn]
 
 # create 10 pets
 30.times do
-  pet = Pet.new(name: Faker::Name.name , birth_date: Faker::Date.birthday(min_age: 1, max_age: 10), category: categories.sample f.check_box :attribute, gender: Faker::Gender.binary_type ,available: true, price_per_day: rand(1.1..49.9),address: Faker::Address.street_address)
+  pet = Pet.new(name: Faker::Name.name , birth_date: Faker::Date.birthday(min_age: 1, max_age: 10), category: categories.sample , gender: Faker::Gender.binary_type ,available: true, price_per_day: rand(1.1..49.9),address: Faker::Address.street_address)
   pet.user = user
   pet.save!
 end
