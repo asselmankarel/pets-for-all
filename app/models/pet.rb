@@ -4,7 +4,7 @@ class Pet < ApplicationRecord
   has_one_attached :photo
 
   CATEGORIES = %w[Dog Cat Horse Reptile Rodent Dragon Unicorn]
-  GENDERS = %w[Male Female Unkwoned]
+  GENDERS = %w[Male Female Unknown]
 
   validates :name, presence: true
   validates :address, presence: true
