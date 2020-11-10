@@ -10,3 +10,8 @@
   </div>
   <% end %>
 </div>
+
+<h3 class="mt-3">Latest pets</h3>
+<% @pets.each do |pet| %>
+  <span><%= pet.name  %> </span>
+<% end %>
