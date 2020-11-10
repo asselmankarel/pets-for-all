@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :pets do
     resources :bookings
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # to allow a user to see all his bookings instead of going via the pet
+  get '/users/:id/bookings', to: 'bookings#index', as: 'user_bookings'
 end

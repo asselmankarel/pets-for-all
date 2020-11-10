@@ -14,16 +14,22 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @pet = Pet.find(params[:pet_id])
+    @booking.pet = @pet
     @booking.user = current_user
   end
 
   def create
     @booking = Booking.new(booking_params)
-    if @booking.safe
-      redirect_to pet_booking @booking
+    @pet = @booking.pet
+    if @booking.save
+      redirect_to pet_booking @pet, @booking
     else
       render :new
     end
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
   end
 
   def edit

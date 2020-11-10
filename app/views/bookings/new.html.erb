@@ -1,0 +1,11 @@
+<h1>Create new booking</h1>
+<h3>Pet: <%= @pet.name %></h3>
+<h3>User: <%= current_user.first_name %></h3>
+
+<%= simple_form_for [@pet, @booking] do |f| %>
+  <%= f.input :start_date, as: :date, html5: true %>
+  <%= f.input :end_date, as: :date, html5: true %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :pet_id %>
+  <%= f.submit %>
+<% end %>
