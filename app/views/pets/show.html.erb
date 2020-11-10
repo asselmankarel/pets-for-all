@@ -6,7 +6,7 @@
 <div class="d-flex">
   <div class="p-5">
 <% if @pet.photo.attached? %>
-  <%= cl_image_tag @pet.photo.key, height: 300, width: 300, crop: :fill, radius: :max %>
+  <%= cl_image_tag @pet.photo.key, height: 300, width: 300, crop: :fill, class: "rounded-circle" %>
 <% end %>
   </div>
   <div class="p-5">
