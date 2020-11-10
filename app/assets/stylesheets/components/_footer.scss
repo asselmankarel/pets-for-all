@@ -1,0 +1,22 @@
+.footer {
+  background: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 50px;
+  color: #EF6D34;
+  display: flex;
+  flex-wrap: wrap;
+  ul {
+    list-style: none;
+    padding-left: 0px;
+  }
+
+  ul li a {
+    color: #fff;
+    font-size: 0.8em;
+  }
+}
+.w200 {
+  width: 200px;
+}
