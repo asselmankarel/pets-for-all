@@ -2,11 +2,7 @@ class PetsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    if params.key?(:category)
-      @pets = Pet.where(category: params[:category])
-    else
-      @pets = Pet.all
-    end
+    @Pets = params.key?(:category) ? Pet.where(category: params[:category]) : Pet.all
   end
 
   def new
