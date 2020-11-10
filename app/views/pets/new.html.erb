@@ -3,9 +3,9 @@
 <%= simple_form_for @pet do |f| %>
   <%= f.input :name %>
   <%= f.input :address %>
-  <%= f.input :gender %>
-  <%= f.input :birth_date %>
-  <%= f.input :category %>
+  <%= f.input :gender, collection: Pet::GENDERS %>
+  <%= f.input :birth_date, as: :date, html5:true %>
+  <%= f.input :category, collection: Pet::CATEGORIES %>
   <%= f.input :description %>
   <%= f.input :photo, as: :file %>
   <%= f.input :available %>
