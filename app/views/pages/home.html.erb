@@ -10,9 +10,3 @@
     </div>
   <% end %>
 </div>
-
-<%if user_signed_in? %>
-  <h3> <%= current_user.email %></h3>
-<% end %>
-
-<%= render 'devise/shared/login' %>
