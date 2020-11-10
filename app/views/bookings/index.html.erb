@@ -1,10 +1,19 @@
 <h1>Bookings</h1>
 <% if @bookings.size == 0 %>
   <p>No booking found for: <%= "#{current_user.first_name} #{current_user.last_name}" %></p>
+<% else %>
+  <p>Booking for user: <strong><%= "#{current_user.first_name} #{current_user.last_name}" %></strong></p>
 <% end %>
-
 <ul>
   <% @bookings.each do |booking| %>
-    <li><%= "#{booking.pet}: from: #{booking.start_date} to: #{booking.end_date}" %></li>
+    <li>
+      <div>
+        <h3>Pet: <%= booking.pet.name %></h3>
+        <p>From: <%= booking.start_date %></p>
+        <p>To: <%= booking.end_date %> </p>
+        <%= link_to 'Edit', edit_pet_booking_path(booking.pet, booking) %>
+        <%= link_to 'Delete', booking_path(booking), method: :destroy, data: { confirm: 'Are you sure?' }%>
+      </div>
+    </li>
   <% end %>
 </ul>
