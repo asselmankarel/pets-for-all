@@ -7,6 +7,8 @@
   <%= f.input :birth_date, as: :date, html5:true %>
   <%= f.input :category, collection: Pet::CATEGORIES %>
   <%= f.input :description %>
+  <%= f.input :photo, as: :file %>
+  <%= f.input :available %>
   <%= f.input :price_per_day %>
   <%= f.submit %>
 <% end %>
