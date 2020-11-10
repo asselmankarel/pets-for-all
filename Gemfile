@@ -33,14 +33,13 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'cloudinary'
-gem 'dotenv-rails'
+gem 'dotenv-rails', groups: %i[development test]
 gem 'devise'
 gem 'faker'
 
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'dotenv-rails'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
