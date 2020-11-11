@@ -35,7 +35,7 @@
     <% end %>
     <div class="dropdown-menu dropdown-menu-right pl-3" aria-labelledby="navbarDropdown">
       <%= render 'devise/shared/login' %><br>
-      <%= link_to 'See all my bookings', user_bookings_path(current_user)%>
+      <%= link_to 'See all my bookings', user_bookings_path(current_user), class: "mr-2"%>
     </div>
   </div>
 </div>
