@@ -29,12 +29,23 @@
   </div>
   <div class="d-flex extra-pics">
     <% 4.times do %>
-      <%= cl_image_tag @pet.photo.key, height: 150, width: 150, crop: :fill, class: "rounded-circle m-4" if @pet.photo.attached? %>
+      <%= cl_image_tag @pet.photo.key, height: 50, width: 50, crop: :fill, class: "rounded-circle m-4" if @pet.photo.attached? %>
     <% end %>
-    <%= link_to "edit", edit_pet_path(@pet), class: "btn m-4" if @pet.user_id == current_user.id %>
+    <%= link_to "Edit", edit_pet_path(@pet), class: "btn m-4" if @pet.user_id == current_user.id %>
     <%= link_to "Remove", pet_path(@pet), {class: "btn m-4", method: :delete, data: {confirm: "Are you sure?"}} if @pet.user_id == current_user.id %>
     <%= link_to "Mark a booking", new_pet_booking_path(@pet), class: "btn m-4" if @pet.user_id != current_user.id %>
   </div>
+
+  <section class="availability mb-2"> 
+    <h3>Available days</h3>
+    <% @available_dates.each do |date| %>
+      <% if date[:available] %>
+        <span class="badge badge-pill badge-success" title='<%= "#{date[:date].day}/#{date[:date].month}" %>'><%= date[:date].day %></span>
+      <% else %>
+        <span class="badge badge-pill badge-danger" title='<%= "#{date[:date].day}/#{date[:date].month}" %>'><%= date[:date].day %></span>
+      <% end %>
+    <% end %>
+  </section>
 </div>
 <section id="other-pet" class="py-4">
   <h2>You may also want to rent these pets:</h2>
