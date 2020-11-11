@@ -1,3 +1,5 @@
+require 'date'
+
 class PetsController < ApplicationController
   before_action :authenticate_user!
 
@@ -21,6 +23,13 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    @available_dates = set_dates
+    bookings = @pet.bookings.where("end_date >= '#{DateTime.now}' AND start_date < '#{DateTime.now.next_day(8)}'")
+    bookings.each do |booking|
+      @available_dates.each do |date|
+        date[:available] = false if (booking.start_date..booking.end_date).cover?(date[:date])
+      end
+    end
   end
 
   def edit
@@ -43,5 +52,15 @@ class PetsController < ApplicationController
 
   def pet_params
     params.require(:pet).permit(:name, :birth_date, :category, :gender, :description, :available, :price_per_day, :address, :photo)
+  end
+
+  def set_dates
+    date = DateTime.now
+    date_hash = []
+    7.times do
+      date_hash << { date: date, available: true }
+      date = date.next_day(1)
+    end
+    return date_hash
   end
 end
