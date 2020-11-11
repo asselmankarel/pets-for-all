@@ -3,7 +3,7 @@
   <% if @bookings.size == 0 %>
     <p>No booking found for: <%= "#{current_user.first_name} #{current_user.last_name}" %></p>
   <% else %>
-    <p>Booking for user: <strong><%= "#{current_user.first_name} #{current_user.last_name}" %></strong></p>
+    <p>For user: <strong><%= "#{current_user.first_name} #{current_user.last_name}" %></strong></p>
   <% end %>
 
   <% @bookings.each do |booking| %>
