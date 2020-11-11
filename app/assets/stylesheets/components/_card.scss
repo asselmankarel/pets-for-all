@@ -11,8 +11,20 @@
   color: white;
   font-size: 24px;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);  
+  transition: all ease .3s;
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#see-all {
+  background-color: #D2D7D9;
 }
 
 @media screen and(max-width: 768px) {
@@ -20,5 +32,13 @@
     height: 120px;
     width: 120px;
     border-radius: 60px;
+  }
+}
+
+.pet-photo {
+  transition: all ease 0.3s;
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   }
 }
