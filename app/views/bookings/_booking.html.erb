@@ -1,7 +1,7 @@
 <div class="card mb-3">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <%= cl_image_tag booking.pet.photo.key, height: 150, width: 150, crop: :fill, class: "rounded-circle m-4" if booking.pet.photo.attached? %>
+      <%= cl_image_tag booking.pet.photo.key, height: 180, width: 180, crop: :fill, class: "rounded-circle m-4" if booking.pet.photo.attached? %>
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -10,6 +10,11 @@
         <% end %>
         <p class="mb-1"><strong>From:</strong> <%= booking.start_date %> <strong>To:</strong> <%= booking.end_date %></p>
         <p class="card-text">Address: <%= booking.pet.address %></p>
+        <% if booking.confirmed %>
+          <p class="text-success">Confirmed by owner: <input type="checkbox" name="confirmed" id="confirmed" checked disabled></p>
+        <% else %>
+          <p class="text-danger">Waiting for owner confirmation: <input type="checkbox" name="confirmed" id="confirmed" disabled></p>
+        <% end %>
         <%= link_to 'Edit', edit_pet_booking_path(booking.pet, booking), class: "btn m-2" %>
         <%= link_to 'Delete', booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn m-2"%>
       </div>
