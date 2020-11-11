@@ -18,8 +18,8 @@ class Booking < ApplicationRecord
     is_overlapping = other_bookings.any? do |other_booking|
       period.overlaps?(other_booking.period)
     end
-    errors.add(:start_date, "Today is alredy taken") if is_overlapping
-    errors.add(:end_date, "Today is alredy taken") if is_overlapping
+    errors.add(:start_date, " is already taken") if is_overlapping
+    errors.add(:end_date, " is already taken") if is_overlapping
   end
 
   def date_validation
