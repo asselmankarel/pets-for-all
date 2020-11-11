@@ -2,8 +2,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <a class="navbar-brand" href="/">
     <%= cl_image_tag("logo") %>
-    </a>
-  </div>
+  </a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -24,16 +23,10 @@
   </div>
 
   <div class="authentication">
-      <ul class="navbar-nav mr-auto">
-        <li><a href="#">Login</a></li>
-          <li class="nav-item dropdown">
-        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
-        <div class="dropdown-menu dropdown-menu-right pl-3" aria-labelledby="navbarDropdown">
-          <%= render 'devise/shared/login' %>
-          <a class="dropdown-item" href="#">Another action</a>
-        </div>
-        </li>
-      </ul>
+    <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+    <div class="dropdown-menu dropdown-menu-right pl-3" aria-labelledby="navbarDropdown">
+      <%= render 'devise/shared/login' %>
+      <a class="dropdown-item" href="#">Another action</a>
+    </div>
   </div>
-
 </div>

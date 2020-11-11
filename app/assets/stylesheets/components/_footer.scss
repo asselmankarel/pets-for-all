@@ -8,7 +8,6 @@
   flex-wrap: wrap;
   position: absolute;
   bottom: 0;
-  height: 100px;
   width: 100%;
 
   ul {
@@ -24,21 +23,6 @@
 
 .w200 {
   width: 120px;
-}
-
-@media screen and(max-width:579px) {
-  .footer {
-    height: 200px;
-  }
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 120px; /* Set the fixed height of the footer here */
 }
 
 // Small devices (landscape phones, 576px and up)
