@@ -36,7 +36,7 @@
     <%= link_to "Mark a booking", new_pet_booking_path(@pet), class: "btn m-4" if @pet.user_id != current_user.id %>
   </div>
 
-  <section class="availability mb-2"> 
+  <section class="availability mb-2">
     <h3>Available days</h3>
     <% @available_dates.each do |date| %>
       <% if date[:available] %>
@@ -47,18 +47,4 @@
     <% end %>
   </section>
 </div>
-<section id="other-pet" class="row-full py-4">
-  <div class="container">
-    <h2>You may also want to rent these pets :</h2>
-    <div class="d-flex justify-content-around">
-      <% 3.times do %>
-        <% category_sample = Pet::CATEGORIES.sample %>
-        <%= link_to "/pets/find/#{category_sample}" do %>
-          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(category_sample) %>')">
-            <p><%= category_sample %></p>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</section>
+<%= render "layouts/shared/other_categories" %>
