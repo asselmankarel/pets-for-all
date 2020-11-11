@@ -13,13 +13,13 @@
 
   <body>
     <div class="page-wrapper">
+      <%= render "/layouts/shared/navbar" %>
       <div class="content-wrap">
-        <%= render "/layouts/shared/navbar" %>
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
         <%= yield %>
-        <%= render 'layouts/shared/footer' %>
       </div>
+      <%= render 'layouts/shared/footer' %>
     </div>
   </body>
 </html>

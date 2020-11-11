@@ -31,7 +31,7 @@
   <div class="row">
     <% @pets.each do |pet| %>
       <%= link_to pet_path(pet) do %>
-        <div class="col-3 text-center mb-3 pet-card">
+        <div class="col-6 col-sm-4 col-md-3 text-center mb-3 pet-card">
           <% if pet.photo.attached? %>  
             <%= cl_image_tag pet.photo.key, height: 150, width: 150, crop: :fill, class: "rounded-circle pet-photo" %>
           <% end %>
