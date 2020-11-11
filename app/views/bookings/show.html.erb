@@ -1,6 +1,8 @@
 <div class="container">
   <h1>Booking details</h1>
-  <h3>Pet: <%= @booking.pet.name %></h3>
+  <%= link_to  pet_path(@booking.pet) do %>
+    <h3>Pet: <%= @booking.pet.name %></h3>
+  <% end %>
   <p>Address: <%= @booking.pet.address %></p>
   <h3>User: <%= current_user.first_name %></h3>
 
