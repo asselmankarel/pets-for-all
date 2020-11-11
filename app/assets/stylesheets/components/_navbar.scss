@@ -20,8 +20,16 @@
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+  background-color: white;
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.nav-link:hover {
+  color:  #ef6d34;
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 50px;
 }
