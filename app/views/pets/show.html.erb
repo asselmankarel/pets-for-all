@@ -13,8 +13,6 @@
       <p>Address: </p>
       <p>Pet type: </p>
       <p>Price per day: </p>
-      <p>Availability: </p>
-      <p>About: </p>
     </div>
     <div class="p-4">
       <p><%= @pet.name %></p>
@@ -23,8 +21,6 @@
       <p><%= @pet.address %></p>
       <p><%= @pet.category %></p>
       <p><%= @pet.price_per_day %></p>
-      <p><%= @pet.available %></p>
-      <p><%= @pet.description %></p>
     </div>
   </div>
   <div class="d-flex extra-pics">
@@ -33,11 +29,11 @@
     <% end %>
     <%= link_to "Edit", edit_pet_path(@pet), class: "btn m-4" if @pet.user_id == current_user.id %>
     <%= link_to "Remove", pet_path(@pet), {class: "btn m-4", method: :delete, data: {confirm: "Are you sure?"}} if @pet.user_id == current_user.id %>
-    <%= link_to "Mark a booking", new_pet_booking_path(@pet), class: "btn m-4" if @pet.user_id != current_user.id %>
+    <%= link_to "Book now", new_pet_booking_path(@pet), class: "btn m-4" if @pet.user_id != current_user.id %>
   </div>
 
-  <section class="availability mb-2"> 
-    <h3>Available days</h3>
+  <section class="availability mb-4"> 
+    <h3>This week availability :</h3>
     <% @available_dates.each do |date| %>
       <% if date[:available] %>
         <span class="badge badge-pill badge-success" title='<%= "#{date[:date].day}/#{date[:date].month}" %>'><%= date[:date].day %></span>
@@ -45,6 +41,11 @@
         <span class="badge badge-pill badge-danger" title='<%= "#{date[:date].day}/#{date[:date].month}" %>'><%= date[:date].day %></span>
       <% end %>
     <% end %>
+  </section>
+  <section id="about-pet">
+    <h4>About <%= @pet.name %> :</h4>
+    <p><%= @pet.description %></p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt rerum sint earum consequatur quia? Quasi perferendis praesentium consequuntur asperiores quis, voluptatibus excepturi dolorum ut, repellendus earum, tempore aliquid omnis minima est perspiciatis libero laborum molestias fugiat? Nisi, quo? Blanditiis ipsum optio nam fugiat quas. Eius voluptates laboriosam dolorum tempore omnis?</p>
   </section>
 </div>
 <section id="other-pet" class="row-full py-4">

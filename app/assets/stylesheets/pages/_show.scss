@@ -6,6 +6,10 @@
   background-color: #ef6d33;
   border: 1px solid #d2d7d9;
   border-radius: 25px;
+  &:hover {
+    background-color: #e4682e;
+    color: white;
+  }
 }
 
 .extra-pics {
