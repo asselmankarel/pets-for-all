@@ -1,6 +1,6 @@
-<div class="navbar navbar-expand-sm navbar-lewagon">
-  <div class="logo">
-    <a class="navbar-brand" href="#">
+
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <a class="navbar-brand" href="/">
     <%= cl_image_tag("logo") %>
     </a>
   </div>
@@ -28,8 +28,8 @@
         <li><a href="#">Login</a></li>
           <li class="nav-item dropdown">
         <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
+        <div class="dropdown-menu dropdown-menu-right pl-3" aria-labelledby="navbarDropdown">
+          <%= render 'devise/shared/login' %>
           <a class="dropdown-item" href="#">Another action</a>
         </div>
         </li>

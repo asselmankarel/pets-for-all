@@ -4,8 +4,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 50px;
-  color: #EF6D34;
+  color: #ef6d34;
   flex-wrap: wrap;
+  position: absolute;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
 
   ul {
     list-style: none;
@@ -19,7 +23,13 @@
 }
 
 .w200 {
-  width: 200px;
+  width: 120px;
+}
+
+@media screen and(max-width:579px) {
+  .footer {
+    height: 200px;
+  }
 }
 
 /* Sticky footer styles

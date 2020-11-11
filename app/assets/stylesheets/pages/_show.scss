@@ -1,3 +1,16 @@
 .d-flex{
   align-items: flex-start;
 }
+
+.btn {
+  background-color: #ef6d33;
+  border: 1px solid #d2d7d9;
+  border-radius: 25px;
+}
+.extra-pics {
+  justify-content: center;
+  align-items: center;
+  a {
+  font-size: 1.5em;
+  }
+}
