@@ -1,7 +1,7 @@
 <div class="card mb-3">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <%= cl_image_tag booking.pet.photo.key, height: 50, width: 50, crop: :fill, class: "rounded-circle m-4" if booking.pet.photo.attached? %>
+      <%= cl_image_tag booking.pet.photo.key, height: 150, width: 150, crop: :fill, class: "rounded-circle m-4" if booking.pet.photo.attached? %>
     </div>
     <div class="col-md-8">
       <div class="card-body">
