@@ -1,5 +1,5 @@
-<div class="container">
-  <%= link_to "Back to all pets", pets_path %>
+<div class="container mb-5">
+  <%= link_to icon('fas', 'chevron-left'), pets_path %>
   <div class="d-flex">
     <div class="p-4">
   <% if @pet.photo.attached? %>
@@ -47,14 +47,18 @@
     <% end %>
   </section>
 </div>
-<section id="other-pet" class="py-4">
-  <h2>You may also want to rent these pets:</h2>
-  <div class="d-flex justify-content-around">
-    <% 4.times do %>
-      <% category_sample = Pet::CATEGORIES.sample %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(category_sample) %>')">
-      <%= category_sample %>
-      </div>
-    <% end %>
+<section id="other-pet" class="row-full py-4">
+  <div class="container">
+    <h2>You may also want to rent these pets :</h2>
+    <div class="d-flex justify-content-around">
+      <% 3.times do %>
+        <% category_sample = Pet::CATEGORIES.sample %>
+        <%= link_to "/pets/find/#{category_sample}" do %>
+          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(category_sample) %>')">
+            <p><%= category_sample %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </section>
