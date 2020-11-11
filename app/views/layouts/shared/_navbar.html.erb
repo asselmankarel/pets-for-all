@@ -23,7 +23,16 @@
   </div>
 
   <div class="authentication">
-    <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+    <% if current_user %>
+    <%if current_user.avatar.attached? %>
+      <%= cl_image_tag current_user.avatar.key, id: "navbarDropdown", class: "rounded-circle avatar dropdown-toggle", data: { toggle: "dropdown"}%>
+    <% else %>
+        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%=asset_path 'noavatar.png' %>" />
+    <%end%>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn"%>
+      <%= link_to "Log in", new_user_session_path, class: "btn"%>
+    <% end %>
     <div class="dropdown-menu dropdown-menu-right pl-3" aria-labelledby="navbarDropdown">
       <%= render 'devise/shared/login' %>
       <a class="dropdown-item" href="#">Another action</a>
