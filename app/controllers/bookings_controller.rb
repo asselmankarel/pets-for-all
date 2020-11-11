@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @pet = @booking.pet
     if @booking.save
-      redirect_to pet_booking_path @pet, @booking
+      redirect_to user_bookings_path current_user
     else
       render :new
     end
@@ -40,7 +40,7 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     if @booking.update(booking_params)
-      redirect_to pet_booking @booking
+      redirect_to user_bookings_path current_user
     else
       render :edit
     end
@@ -49,7 +49,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy if @booking.user == current_user
-    redirect_to pet_bookings_path
+    redirect_to user_bookings_path current_user
   end
 
   private
