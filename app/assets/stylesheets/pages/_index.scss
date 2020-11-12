@@ -2,3 +2,10 @@
 @import "home";
 @import "show";
 @import "category";
+
+a {
+  color: $orange;
+  &:hover {
+    color: #d15f2a;
+  }
+}

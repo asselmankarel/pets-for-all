@@ -22,19 +22,12 @@
       <% end %>
     </div>
 
-    <div class="col-sm-12 col-lg-6">
+    <div class="col-sm-12 col-lg-6 mt-2">
       <h3>My pets</h3>
       <div class="row">
         <% @pets.each do |pet| %>
-          <div class="col-6">
-            <div class="card mt-2">
-              <div class="card-body">
-                <h5 class="card-title"><%= pet.name %></h5>
-                <%= cl_image_tag pet.photos.first.key, height: 60, width: 60 if pet.photos.attached?%>
-                <p><%= number_with_precision(pet.price_per_day, precision: 2) %> €</p>  
-                <%= link_to  'edit', edit_pet_path(pet), class: "btn" %>
-              </div>
-            </div>
+          <div class="col-6 mb-3">
+            <%= render  "pets/info_window", pet: pet %>
           </div>
         <% end %>
       </div>
