@@ -37,13 +37,29 @@
 }
 
 #query {
+  width: 0vw;
+  border: none;
+}
+
+.input {
+  width: 0vw;
+  border: none;
+}
+
+#secret:focus-within {
+  width: 20vw;
+  transition: 10s;
+
+  #query {
   width: 8vw;
   border: none;
+  padding: 0;
 }
 
 .input {
   width: 5vw;
   border: none;
+}
 }
 
 .dropdown-toggle {
