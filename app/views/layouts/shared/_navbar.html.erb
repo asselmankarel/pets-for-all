@@ -19,6 +19,15 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">End date</a>
       </li>
+      <li>
+        <%= form_tag pets_path, class: "d-flex", method: :get do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Whatever you want"%>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
+      </li>
     </ul>
   </div>
 

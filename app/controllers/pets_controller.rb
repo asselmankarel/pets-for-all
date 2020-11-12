@@ -4,7 +4,12 @@ class PetsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @pets = params.key?(:category) ? Pet.where(category: params[:category]) : Pet.all
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR category ILIKE :query"
+      @pets = Pet.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @pets = params.key?(:category) ? Pet.where(category: params[:category]) : Pet.all
+    end
   end
 
   def new
