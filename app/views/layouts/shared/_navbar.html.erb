@@ -3,14 +3,13 @@
   <a class="navbar-brand" href="/">
     <%= cl_image_tag("logo") %>
   </a>
-
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse pr-0" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-        <%= form_tag pets_path, class: "d-flex align-items-center", method: :get do %>
+        <%= form_tag pets_path, id: "secret", class: "d-flex align-items-center", method: :get do %>
       <li>
           <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "What animal?"%>
       </li>
