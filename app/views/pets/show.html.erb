@@ -1,46 +1,140 @@
 <div class="container mb-5">
-  <%= link_to icon('fas', 'chevron-left'), pets_path, class: "btn" %>
-  <div class="d-flex">
-    <div class="p-4">
-  <% if @pet.photos.attached? %>
-    <%= cl_image_tag @pet.photos.first.key, height: 350, width: 350, crop: :fill, class: "rounded-circle" %>
-  <% end %>
-    </div>
-    <div class="p-4">
-      <p>Name: </p>
-      <p>Gender: </p>
-      <p>Date of birth: </p>
-      <p>Address: </p>
-      <p>Pet type: </p>
-      <p>Price per day: </p>
-    </div>
-    <div class="p-4">
-      <p><%= @pet.name %></p>
-      <p><%= @pet.gender %></p>
-      <p><%= @pet.birth_date %></p>
-      <p><%= @pet.address %></p>
-      <p><%= @pet.category %></p>
-      <p><%= number_with_precision(@pet.price_per_day, precision: 2) %> €</p>
-    </div>
-  </div>
-  <div class="d-flex extra-pics">
-    <% if @pet.photos.attached? %>
-      <% @pet.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 50, width: 50, crop: :fill, class: "rounded-circle m-4" %>
+
+      <%= link_to icon('fas', 'chevron-left'), pets_path, class: "btn" %>
+
+  <div class="row">
+    <div class="col-12 col-md-6 col-xl-4 text-center">
+      <% if @pet.photos.attached? %>
+        <%= cl_image_tag @pet.photos.first.key, height: 330, width: 330, crop: :fill, class: "rounded-circle" %>
       <% end %>
-    <% end %>
-    
-    <% if current_user %>      
-      <%= link_to "Edit", edit_pet_path(@pet), class: "btn m-4" if @pet.user_id == current_user.id %>
-      <%= link_to "Remove", pet_path(@pet), {class: "btn m-4", method: :delete, data: {confirm: "Are you sure?"}} if @pet.user_id == current_user.id %>
-      <%= link_to "Book now", new_pet_booking_path(@pet), class: "btn m-4" if @pet.user_id != current_user.id %>
-    <% else %>
-      Log in to book this <%= @pet.category.downcase %>.
-    <% end %>
-    
+      <div class="d-flex justify-content-center mt-3">
+        <% if @pet.photos.attached? %>
+          <% @pet.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 75, width: 75, crop: :fill, class: "rounded-circle mx-3" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-xl-4">
+      <!--<div class="info">
+        <h4 class="border-bottom pb-2"><%= @pet.name %></h4>
+        <div class="d-flex">
+          <i class="fas fa-venus-mars mr-2 my-1"></i>
+          <p class="text-secondary"><%= @pet.gender %></p>
+        </div>
+        <div class="d-flex">
+          <i class="fas fa-birthday-cake mr-2 my-1"></i>
+          <p class="text-secondary"><%= @pet.birth_date %></p>
+        </div>
+        <div class="d-flex">
+          <i class="far fa-compass mr-2 my-1"></i>
+          <p class="text-secondary"><%= @pet.address %></p>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="d-flex">
+              <i class="fas fa-paw mr-2 my-1"></i>
+              <p class="text-secondary"><%= @pet.category %></p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex">
+              <i class="fas fa-money-bill mr-2 my-1"></i>
+              <p class="text-secondary"><%= number_with_precision(@pet.price_per_day, precision: 2) %> €</p>
+            </div>
+          </div>
+        </div>
+        <div class="action py-4">
+          <% if current_user %>      
+            <%= link_to "Edit", edit_pet_path(@pet), class: "btn mr-3" if @pet.user_id == current_user.id %>
+            <%= link_to "Remove", pet_path(@pet), {class: "btn", method: :delete, data: {confirm: "Are you sure?"}} if @pet.user_id == current_user.id %>
+            <%= link_to "Book now", new_pet_booking_path(@pet), class: "btn" if @pet.user_id != current_user.id %>
+          <% else %>
+            <%= link_to "Log in to book this #{@pet.category.downcase}", new_user_session_path, class: "btn"  %>
+          <% end %>
+        </div>
+      </div>-->
+      <div class="info">
+        <h4 class="border-bottom pb-2"><%= @pet.name %></h4>
+        <h5>Gender </h5>
+        <p class="text-secondary"><%= @pet.gender %></p>
+        <h5>Birthday</h5>
+        <p class="text-secondary"><%= @pet.birth_date %></p>
+        <h5>Location</h5>
+        <p class="text-secondary"><%= @pet.address %></p>
+
+        <div class="row">
+          <div class="col-6">
+            <h5>Category </h5>
+            <p class="text-secondary"><%= @pet.category %></p>
+          </div>
+          <div class="col-6">
+            <h5>Price</h5>
+            <p class="text-secondary"><%= number_with_precision(@pet.price_per_day, precision: 2) %> €</p>
+          </div>
+        </div>
+        <div class="action py-4">
+          <% if current_user %>      
+            <%= link_to "Edit", edit_pet_path(@pet), class: "btn mr-3" if @pet.user_id == current_user.id %>
+            <%= link_to "Remove", pet_path(@pet), {class: "btn", method: :delete, data: {confirm: "Are you sure?"}} if @pet.user_id == current_user.id %>
+            <%= link_to "Book now", new_pet_booking_path(@pet), class: "btn" if @pet.user_id != current_user.id %>
+          <% else %>
+            <%= link_to "Log in to book this #{@pet.category.downcase}", new_user_session_path, class: "btn"  %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-xl-4">
+      <h4 class="border-bottom pb-2">Reviews</h4>
+      <div class="fake-review mt-4">
+        <h5>Fake User</h5>
+        <p class="text-secondary mb-1">This is a nice <%= @pet.category %></p>
+        <div class="d-flex">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+      </div>
+      <div class="fake-review mt-4">
+        <h5>Fake User</h5>
+        <p class="text-secondary mb-1">This is a nice <%= @pet.category %></p>
+        <div class="d-flex">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+      </div>
+      <div class="fake-review mt-4">
+        <h5>Fake User</h5>
+        <p class="text-secondary mb-1">This is a nice <%= @pet.category %></p>
+        <div class="d-flex">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+      </div>
+      <div class="fake-review mt-4">
+        <h5>Fake User</h5>
+        <p class="text-secondary mb-1">This is not a nice <%= @pet.category %></p>
+        <div class="d-flex">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <section class="availability mb-4"> 
+  <section class="availability my-5"> 
     <h3>This week availability :</h3>
     <% @available_dates.each do |date| %>
       <% if date[:available] %>
@@ -51,7 +145,7 @@
     <% end %>
   </section>
   <section id="about-pet">
-    <h4>About <%= @pet.name %> :</h4>
+    <h4>About <%= @pet.name %> :</h4>    
     <p><%= @pet.description %></p>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt rerum sint earum consequatur quia? Quasi perferendis praesentium consequuntur asperiores quis, voluptatibus excepturi dolorum ut, repellendus earum, tempore aliquid omnis minima est perspiciatis libero laborum molestias fugiat? Nisi, quo? Blanditiis ipsum optio nam fugiat quas. Eius voluptates laboriosam dolorum tempore omnis?</p>
   </section>
