@@ -38,6 +38,7 @@ class PetsController < ApplicationController
   def show
     @pet = Pet.find(params[:id])
     @available_dates = set_dates
+    @booking = Booking.new
     bookings = @pet.bookings.where("end_date >= '#{DateTime.now}' AND start_date < '#{DateTime.now.next_day(8)}'")
     bookings.each do |booking|
       @available_dates.each do |date|
