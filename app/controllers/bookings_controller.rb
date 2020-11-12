@@ -19,12 +19,17 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @available_dates = set_dates
+    @review = Review.new
+    @pet = Pet.find(params[:pet_id])
+    @user = current_user
     @booking = Booking.new(booking_params)
-    @pet = @booking.pet
+    @booking.pet = @pet
+    @booking.user = @user
     if @booking.save
       redirect_to dashboard_path
     else
-      render :new
+      render 'pets/show'
     end
   end
 
@@ -48,7 +53,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
-    @booking.destroy if @booking.pet.user == current_user
+    @booking.destroy if @booking.pet.user == current_user || @booking.user == current_user
     redirect_to dashboard_path
   end
 
@@ -76,5 +81,15 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :user_id, :pet_id)
+  end
+
+  def set_dates
+    date = DateTime.now
+    date_hash = []
+    7.times do
+      date_hash << { date: date, available: true }
+      date = date.next_day(1)
+    end
+    return date_hash
   end
 end
