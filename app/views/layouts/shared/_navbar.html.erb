@@ -36,8 +36,6 @@
       <%= link_to "Log in", new_user_session_path, class: "btn"%>
     <% end %>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-      <%= link_to 'My bookings', user_bookings_path(current_user), class: "dropdown-item" if current_user %>
-      <%= link_to 'My booked pets', user_booked_pets_path(current_user), class: "dropdown-item" if current_user %>
       <%= link_to 'Dashboard', dashboard_path, class: "dropdown-item" if current_user %>
       <%= link_to 'Add a new pet', new_pet_path, class: "dropdown-item" %>
       <%= render 'devise/shared/login' %>
