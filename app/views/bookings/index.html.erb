@@ -1,10 +1,11 @@
 <div class="container">
   <h1>Bookings</h1>
   <% if @bookings.size == 0 %>
-    <p>No bookings found for: <%= "#{current_user.first_name} #{current_user.last_name}" %></p>
+    <p>You have not made any booking yet</p>
   <% else %>
     <% @bookings.each do |booking| %>
       <%= render 'booking', booking: booking %>
     <% end %>
   <% end %>
+  <%= link_to "Back to pets", pets_path, class: "btn" %>
 </div>

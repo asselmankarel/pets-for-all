@@ -1,7 +1,7 @@
 require 'date'
 
 class PetsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   def home
     @pets = Pet.all
