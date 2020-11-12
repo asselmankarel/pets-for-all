@@ -1,3 +1,9 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+
 .footer {
   background: #333;
   display: flex;
@@ -5,12 +11,13 @@
   justify-content: space-between;
   padding-left: 50px;
   padding-right: 50px;
+  padding-top: 10px;
   color: #ef6d34;
   flex-wrap: wrap;
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 12vh;
+  // height: 12vh;
 
   ul {
     list-style: none;
@@ -21,11 +28,17 @@
     color: #fff;
     font-size: 0.8em;
   }
+
+  ul li a:hover {
+    color: #ef6d34;
+    font-size: 0.8em;
+  }
 }
 
 .w200 {
   width: 120px;
 }
+
 
 // Small devices (landscape phones, 576px and up)
 @media (max-width: 576px) {
