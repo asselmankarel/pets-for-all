@@ -2,8 +2,8 @@
   <%= link_to icon('fas', 'chevron-left'), pets_path, class: "btn" %>
   <div class="d-flex">
     <div class="p-4">
-  <% if @pet.photo.attached? %>
-    <%= cl_image_tag @pet.photo.key, height: 350, width: 350, crop: :fill, class: "rounded-circle" %>
+  <% if @pet.photos.attached? %>
+    <%= cl_image_tag @pet.photos.first.key, height: 350, width: 350, crop: :fill, class: "rounded-circle" %>
   <% end %>
     </div>
     <div class="p-4">
@@ -24,8 +24,10 @@
     </div>
   </div>
   <div class="d-flex extra-pics">
-    <% 4.times do %>
-      <%= cl_image_tag @pet.photo.key, height: 50, width: 50, crop: :fill, class: "rounded-circle m-4" if @pet.photo.attached? %>
+    <% if @pet.photos.attached? %>
+      <% @pet.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 50, width: 50, crop: :fill, class: "rounded-circle m-4" %>
+      <% end %>
     <% end %>
     <%= link_to "Edit", edit_pet_path(@pet), class: "btn m-4" if @pet.user_id == current_user.id %>
     <%= link_to "Remove", pet_path(@pet), {class: "btn m-4", method: :delete, data: {confirm: "Are you sure?"}} if @pet.user_id == current_user.id %>

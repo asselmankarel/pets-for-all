@@ -1,7 +1,7 @@
 class Pet < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
-  has_one_attached :photo
+  has_many_attached :photos
   geocoded_by :address
 
   CATEGORIES = %w[Dog Cat Horse Reptile Rodent Dragon Unicorn]
