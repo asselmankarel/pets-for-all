@@ -20,12 +20,6 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @pet = @booking.pet
-    if @booking.save
-      redirect_to user_bookings_path current_user
-    else
-      render :new
-    end
   end
 
   def show
