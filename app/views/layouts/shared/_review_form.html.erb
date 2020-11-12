@@ -1,0 +1,7 @@
+<%= simple_form_for [@pet, @review] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= button_tag :submit, class: "btn btn-primary w-100" do %>
+    <%= icon('fas', 'check', "Add a review") %>
+  <% end %>
+<% end %>
