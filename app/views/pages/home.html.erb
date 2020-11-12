@@ -22,9 +22,11 @@
   </div>
 </div>
 
-<section id="map" class="d-flex align-items-center justify-content-center">
-  There will be the map
-</section>
+<div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
 
 <div class="container mb-5">
   <h3 class="py-4">Next available pets :</h3>
