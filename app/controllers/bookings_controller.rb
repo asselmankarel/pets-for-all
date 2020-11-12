@@ -49,7 +49,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy if @booking.user == current_user
-    redirect_to user_bookings_path current_user
+    redirect_to dashboard
   end
 
   def booked_pets
