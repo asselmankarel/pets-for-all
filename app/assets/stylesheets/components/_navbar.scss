@@ -1,6 +1,7 @@
 .navbar {
   height: 8vh;
   padding: 0 20px;
+  margin-bottom: 20px;
   ul li a, .nav-link {
     color: #fff;
   }
@@ -32,7 +33,7 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 50px;
+  width: 60px;
 }
 
 #query {
@@ -43,4 +44,8 @@
 .input {
   width: 5vw;
   border: none;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
 }
