@@ -10,24 +10,16 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">What animal?</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Start Date</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">End date</a>
+        <%= form_tag pets_path, class: "d-flex align-items-center", method: :get do %>
+      <li>
+          <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "What animal?"%>
       </li>
       <li>
-        <%= form_tag pets_path, class: "d-flex", method: :get do %>
-          <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Whatever you want"%>
+          <%= date_field :start_date, as: :date, html5: true %>
+      </li>
+          <%= date_field :end_date, as: :date, html5: true %>
           <%= submit_tag "Search", class: "btn btn-primary" %>
         <% end %>
-      </li>
     </ul>
   </div>
 
