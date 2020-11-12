@@ -20,7 +20,7 @@
       <p><%= @pet.birth_date %></p>
       <p><%= @pet.address %></p>
       <p><%= @pet.category %></p>
-      <p><%= @pet.price_per_day %>€</p>
+      <p><%= number_with_precision(@pet.price_per_day, precision: 2) %> €</p>
     </div>
   </div>
   <div class="d-flex extra-pics">
