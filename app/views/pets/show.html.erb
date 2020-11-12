@@ -87,48 +87,23 @@
     </div>
     <div class="col-12 col-xl-4">
       <h4 class="border-bottom pb-2">Reviews</h4>
-      <div class="fake-review mt-4">
-        <h5>Fake User</h5>
-        <p class="text-secondary mb-1">This is a nice <%= @pet.category %></p>
-        <div class="d-flex">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
+      <% @pet.reviews.each do |review| %>
+        <div class="fake-review mt-4">
+          <p class="mb-1"><%= review.content %></p>
+          <div class="d-flex align-items-center">
+            <p class="text-secondary my-0 mr-2"><%= review.user.first_name %> -</p>
+            <% review.rating.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <% (5 - review.rating).times do %>
+              <i class="far fa-star"></i>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
       <div class="fake-review mt-4">
-        <h5>Fake User</h5>
-        <p class="text-secondary mb-1">This is a nice <%= @pet.category %></p>
-        <div class="d-flex">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
-        </div>
-      </div>
-      <div class="fake-review mt-4">
-        <h5>Fake User</h5>
-        <p class="text-secondary mb-1">This is a nice <%= @pet.category %></p>
-        <div class="d-flex">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-        </div>
-      </div>
-      <div class="fake-review mt-4">
-        <h5>Fake User</h5>
-        <p class="text-secondary mb-1">This is not a nice <%= @pet.category %></p>
-        <div class="d-flex">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
+        <h5>Add a review</h5>
+        <%= render  "layouts/shared/review_form" %>
         </div>
       </div>
     </div>

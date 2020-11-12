@@ -44,6 +44,7 @@ class PetsController < ApplicationController
         date[:available] = false if (booking.start_date..booking.end_date).cover?(date[:date])
       end
     end
+    @review = Review.new
   end
 
   def edit

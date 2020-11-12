@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :pets, dependent: :destroy
   has_many :bookings
+  has_many :reviews
   has_one_attached :avatar
 
   validates :first_name, :last_name, presence: true
