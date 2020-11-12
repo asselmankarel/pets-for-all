@@ -2,11 +2,39 @@
   margin: 50px 0;
 }
 
-.mapboxgl-popup {
-  max-width: 200px;
+.card-pet {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+
+.card-pet > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-pet h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-pet p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-pet .card-pet-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
 }
 
 .mapboxgl-popup-content {
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  padding: 0;
 }
