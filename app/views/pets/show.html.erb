@@ -134,7 +134,7 @@
     </div>
   </div>
 
-  <section class="availability my-5"> 
+  <section class="my-5"> 
     <h3>This week availability :</h3>
     <% @available_dates.each do |date| %>
       <% if date[:available] %>
@@ -144,6 +144,8 @@
       <% end %>
     <% end %>
   </section>
+
+
   <section id="about-pet">
     <h4>About <%= @pet.name %> :</h4>    
     <p><%= @pet.description %></p>
