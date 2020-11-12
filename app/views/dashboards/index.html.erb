@@ -1,8 +1,18 @@
 <div class="container">
   <div class="row mt-3">
 
-    <div class="col-sm-12 col-lg-6">
+    <div class="col-sm-12 col-lg-6 mt-2">
       <h3>Incomming bookings</h3>
+      <% if @incomming_bookings.size == 0 %>
+        <p>No bookings found for: <%= "#{current_user.first_name} #{current_user.last_name}" %></p>
+      <% else %>
+        <% @incomming_bookings.each do |booking| %>
+          <%= render 'bookings/booking', booking: booking %>
+        <% end %>
+      <% end %>
+    
+
+      <h3>My bookings</h3>
       <% if @bookings.size == 0 %>
         <p>No bookings found for: <%= "#{current_user.first_name} #{current_user.last_name}" %></p>
       <% else %>
