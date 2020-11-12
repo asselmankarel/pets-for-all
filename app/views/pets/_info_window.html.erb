@@ -1,0 +1,12 @@
+<div class="card-pet">
+  <% if pet.photo.attached? %>
+    <%= cl_image_tag pet.photo.key %>
+  <% end %>
+  <div class="card-pet-infos">
+    <div>
+      <h2><%= link_to pet.name, pet_path(pet) %></h2>
+      <p><%= pet.address %></p>
+    </div>
+    <h2 class="card-pet-pricing"><%= pet.price_per_day %>€</h2>
+  </div>
+</div>
