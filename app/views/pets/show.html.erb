@@ -10,7 +10,7 @@
       <div class="d-flex justify-content-center mt-3">
         <% if @pet.photos.attached? %>
           <% @pet.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 75, width: 75, crop: :fill, class: "rounded-circle mx-3" %>
+            <%= cl_image_tag photo.key, height: 75, width: 75, crop: :fill, class: "rounded-circle mx-2" %>
           <% end %>
         <% end %>
       </div>
@@ -101,13 +101,16 @@
           </div>
         </div>
       <% end %>
+      <% unless @pet.user == current_user %>
       <div class="fake-review mt-4">
         <h5>Add a review</h5>
         <%= render  "layouts/shared/review_form" %>
       </div>
+      <% end %>
     </div>
   </div>
 
+<% unless @pet.user == current_user %>
   <section class="my-5 d-flex">
     <div class="mx-4 px-5">
       <h3>Mark a Booking:</h3>
@@ -123,9 +126,8 @@
       <% end %>
     <% end %>
     </div>
-  </section>
-
-
+  </section>  
+<% end %>
 
   <section id="about-pet">
     <h4>About <%= @pet.name %> :</h4>
