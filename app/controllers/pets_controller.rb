@@ -10,6 +10,15 @@ class PetsController < ApplicationController
     else
       @pets = params.key?(:category) ? Pet.where(category: params[:category]) : Pet.all
     end
+
+    @markers = @pets.geocoded.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { pet: pet }),
+        image_url: helpers.asset_url('paw.png')
+      }
+    end
   end
 
   def new
