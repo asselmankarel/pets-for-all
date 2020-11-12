@@ -39,6 +39,8 @@
       <br>
       <%= link_to 'See all my booked pets', user_booked_pets_path(current_user), class: "mr-2" if current_user %>
       <br>
+      <%= link_to 'Add a new pet', new_pet_path %>
+      <br>
       <%= render 'devise/shared/login' %>
     </div>
   </div>
