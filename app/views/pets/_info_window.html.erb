@@ -1,6 +1,6 @@
 <div class="card-pet">
-  <% if pet.photo.attached? %>
-    <%= cl_image_tag pet.photo.key %>
+  <% if pet.photos.attached? %>
+    <%= cl_image_tag pet.photos.first.key %>
   <% end %>
   <div class="card-pet-infos">
     <div>
