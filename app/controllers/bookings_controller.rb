@@ -52,7 +52,27 @@ class BookingsController < ApplicationController
     redirect_to user_bookings_path current_user
   end
 
+  def booked_pets
+    find_bookings
+  end
+
+  def confirm
+    booking = Booking.find(params[:id])
+    booking.confirmed = true if booking.pet.user == current_user
+    booking.save(validate: false)
+    find_bookings
+    redirect_to user_booked_pets_path current_user
+  end
+
   private
+
+  def find_bookings
+    all_bookings = Booking.where("end_date >= '#{DateTime.now}'")
+    @bookings = []
+    all_bookings.each do |booking|
+      @bookings << booking if booking.pet.user == current_user
+    end
+  end
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :user_id, :pet_id)
