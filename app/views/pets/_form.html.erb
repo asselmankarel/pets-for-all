@@ -1,6 +1,6 @@
 <%= simple_form_for @pet do |f| %>
   <%= f.input :name %>
-  <%= f.input :address %>
+  <%= f.input :address, html: { id: :pet_address} %>
   <%= f.input :gender, collection: Pet::GENDERS %>
   <%= f.input :birth_date, as: :date, html5:true %>
   <%= f.input :category, collection: Pet::CATEGORIES %>
