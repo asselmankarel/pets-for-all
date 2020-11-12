@@ -15,8 +15,7 @@
     <div class="page-wrapper">
       <%= render "/layouts/shared/navbar" %>
       <div class="content-wrap">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+        <%= render  "layouts/shared/flashes" %>
         <%= yield %>
       </div>
       <%= render 'layouts/shared/footer' %>
