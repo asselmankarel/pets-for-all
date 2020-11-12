@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = @user
     @review.pet = @pet
+    @booking = Booking.new
     @available_dates = set_dates
     if @review.save
       redirect_to pet_path(@pet)
