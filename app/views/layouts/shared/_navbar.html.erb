@@ -15,9 +15,9 @@
           <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "What animal?"%>
       </li>
       <li>
-          <%= date_field :start_date, as: :date, html5: true %>
+           <input type="text" class="input" placeholder="start date" onfocus="(this.type='date')" onblur="(this.type='text')">
       </li>
-          <%= date_field :end_date, as: :date, html5: true %>
+          <input type="text" class="input" placeholder="end date" onfocus="(this.type='date')" onblur="(this.type='text')">
           <%= submit_tag "Search", class: "btn btn-primary" %>
         <% end %>
     </ul>
