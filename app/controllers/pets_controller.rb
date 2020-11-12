@@ -3,6 +3,13 @@ require 'date'
 class PetsController < ApplicationController
   before_action :authenticate_user!
 
+  def home
+    @pets = Pet.all
+    put_markers
+
+    @pets = Pet.last(4)
+  end
+
   def index
     if params[:query].present?
       sql_query = "name ILIKE :query OR category ILIKE :query"
@@ -11,14 +18,7 @@ class PetsController < ApplicationController
       @pets = params.key?(:category) ? Pet.where(category: params[:category]) : Pet.all
     end
 
-    @markers = @pets.geocoded.map do |pet|
-      {
-        lat: pet.latitude,
-        lng: pet.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { pet: pet }),
-        image_url: helpers.asset_url('paw.png')
-      }
-    end
+    put_markers
   end
 
   def new
@@ -63,6 +63,17 @@ class PetsController < ApplicationController
   end
 
   private
+
+  def put_markers
+    @markers = @pets.geocoded.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { pet: pet }),
+        image_url: helpers.asset_url('paw.png')
+      }
+    end
+  end
 
   def pet_params
     params.require(:pet).permit(:name, :birth_date, :category, :gender, :description, :available, :price_per_day, :address, :photo)
