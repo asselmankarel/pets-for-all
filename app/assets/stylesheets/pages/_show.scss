@@ -1,4 +1,4 @@
-.d-flex{
+.d-flex {
   align-items: flex-start;
 }
 
@@ -16,6 +16,39 @@
 .extra-pics {
   align-items: center;
   a {
-  font-size: 1.5em;
+    font-size: 1.5em;
+  }
+}
+
+.availability {
+  background-color: lightgray;
+  width: max-content;
+  padding: 1px 5px 5px 5px;
+  border-radius: 2px;
+
+  ul {
+    font-family: monospace;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+  }
+
+  li {
+    display: inline;
+    padding: 2px 5px;
+    border-radius: 2px;
+  }
+
+  .not-available {
+    background-color: red;
+  }
+
+  .available {
+    background-color: green;
+  }
+
+  .day-in-past {
+    color: gray;
   }
 }
