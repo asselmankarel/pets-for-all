@@ -5,13 +5,23 @@ class Booking < ApplicationRecord
   validates :start_date, :end_date, presence: true
   validate :date_validation
 
-  validate :validate_other_booking_overlap
+  validate :validate_other_booking_overlap, on: [:create]
+  validate :validate_other_booking_overlap_update, on: [:update]
 
   def period
     start_date..end_date
   end
 
   private
+
+  def validate_other_booking_overlap_update
+    other_bookings = Booking.where("id != ?", self.id)
+    is_overlapping = other_bookings.any? do |other_booking|
+      period.overlaps?(other_booking.period)
+    end
+    errors.add(:start_date, " is already taken") if is_overlapping
+    errors.add(:end_date, " is already taken") if is_overlapping
+  end
 
   def validate_other_booking_overlap
     other_bookings = Booking.all
