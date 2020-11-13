@@ -1,0 +1,12 @@
+.review-btn {
+  border: none;
+  border-radius: 50%;
+  background-color: $orange;
+  height: 30px;
+  width: 30px;
+  color: white;
+  transition: all ease 0.2s;
+  &:hover {
+    color: black;
+  }
+}
