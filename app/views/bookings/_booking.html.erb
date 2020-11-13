@@ -11,6 +11,7 @@
     <p><strong>Contact:</strong> <%= booking.user.email %></p>
     <p class="mb-1"><strong>From:</strong> <%= booking.start_date %> <strong>To:</strong> <%= booking.end_date %></p>
     <p class="card-text">Address: <%= booking.pet.address %></p>
+    <p class="card-text">Total: <strong><%= booking.total_price %></strong> €</p>
     <% if booking.confirmed %>
       <p class="text-success">Confirmed<input type="checkbox" name="confirmed" id="confirmed" checked disabled class="ml-2"></p>
     <% else %>
