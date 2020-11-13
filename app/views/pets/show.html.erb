@@ -16,45 +16,6 @@
       </div>
     </div>
     <div class="col-12 col-md-6 col-xl-4">
-      <!--<div class="info">
-        <h4 class="border-bottom pb-2"><%= @pet.name %></h4>
-        <div class="d-flex">
-          <i class="fas fa-venus-mars mr-2 my-1"></i>
-          <p class="text-secondary"><%= @pet.gender %></p>
-        </div>
-        <div class="d-flex">
-          <i class="fas fa-birthday-cake mr-2 my-1"></i>
-          <p class="text-secondary"><%= @pet.birth_date %></p>
-        </div>
-        <div class="d-flex">
-          <i class="far fa-compass mr-2 my-1"></i>
-          <p class="text-secondary"><%= @pet.address %></p>
-        </div>
-
-        <div class="row">
-          <div class="col-6">
-            <div class="d-flex">
-              <i class="fas fa-paw mr-2 my-1"></i>
-              <p class="text-secondary"><%= @pet.category %></p>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="d-flex">
-              <i class="fas fa-money-bill mr-2 my-1"></i>
-              <p class="text-secondary"><%= number_with_precision(@pet.price_per_day, precision: 2) %> €</p>
-            </div>
-          </div>
-        </div>
-        <div class="action py-4">
-          <% if current_user %>
-            <%= link_to "Edit", edit_pet_path(@pet), class: "btn mr-3" if @pet.user_id == current_user.id %>
-            <%= link_to "Remove", pet_path(@pet), {class: "btn", method: :delete, data: {confirm: "Are you sure?"}} if @pet.user_id == current_user.id %>
-            <%= link_to "Book now", new_pet_booking_path(@pet), class: "btn" if @pet.user_id != current_user.id %>
-          <% else %>
-            <%= link_to "Log in to book this #{@pet.category.downcase}", new_user_session_path, class: "btn"  %>
-          <% end %>
-        </div>
-      </div>-->
       <div class="info">
         <h4 class="border-bottom pb-2">
           <%= @pet.name %>
@@ -117,17 +78,21 @@
         <% end %>
       </div>
     </div>
+    
     <div class="col-4">
-      <h3>Book now</h3>
-      <%= render 'bookings/form' %>
+      <button type="button" class="btn" data-toggle="modal" data-target="#bookingModal">
+          Book now
+      </button>
+      <% unless @booking.errors.messages.empty? %>
+        <p class="text-danger mt-2">Chosen dates not available !</p>
+      <% end %>
     </div>
 
     <div class="col-4">
       <% unless @pet.user == current_user %>
-      <div>
-        <h3>Add a review</h3>
-        <%= render  "layouts/shared/review_form" %>
-      </div>
+        <button type="button" class="btn" data-toggle="modal" data-target="#reviewModal">
+          Add a review
+      </button>
       <% end %>
     </div>
   </div>
@@ -140,4 +105,44 @@
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt rerum sint earum consequatur quia? Quasi perferendis praesentium consequuntur asperiores quis, voluptatibus excepturi dolorum ut, repellendus earum, tempore aliquid omnis minima est perspiciatis libero laborum molestias fugiat? Nisi, quo? Blanditiis ipsum optio nam fugiat quas. Eius voluptates laboriosam dolorum tempore omnis?</p>
   </section>
 </div>
+
+<!-- Modal for booking -->
+<div class="modal fade" id="bookingModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Book now</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'bookings/form' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal end -->
+
+<!-- Modal for review -->
+<div class="modal fade" id="reviewModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add a review</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render  "layouts/shared/review_form" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal end -->
+
+
 <%= render "layouts/shared/other_categories" %>
