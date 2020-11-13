@@ -41,12 +41,14 @@
             <p class="text-secondary"><%= number_with_precision(@pet.price_per_day, precision: 2) %> €</p>
           </div>
         </div>
-        <button type="button" class="btn w-75" data-toggle="modal" data-target="#bookingModal">
-          Book now
-      </button>
-      <% unless @booking.errors.messages.empty? %>
-        <p class="text-danger mt-2">Chosen dates not available !</p>
-      <% end %>
+        <% unless @pet.user == current_user %>
+          <button type="button" class="btn w-75" data-toggle="modal" data-target="#bookingModal">
+            Book now
+          </button>
+          <% unless @booking.errors.messages.empty? %>
+            <p class="text-danger mt-2">Chosen dates not available !</p>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <div class="col-12 col-xl-4">
