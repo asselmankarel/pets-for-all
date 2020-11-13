@@ -9,7 +9,7 @@
       <% end %>
       <div class="d-flex justify-content-center mt-3">
         <% if @pet.photos.attached? %>
-          <% @pet.photos.each do |photo| %>
+          <% @pet.photos[1..3].each do |photo| %>
             <%= cl_image_tag photo.key, height: 75, width: 75, crop: :fill, class: "rounded-circle mx-2" %>
           <% end %>
         <% end %>
@@ -59,13 +59,13 @@
           </div>
         </div>
       <% end %>
-      
+
     </div>
   </div>
 
 <% unless @pet.user == current_user %>
   <section class="my-5">
-  <div class="row"> 
+  <div class="row">
     <div class="col-4">
       <h3>This week availability</h3>
       <div>
@@ -77,8 +77,8 @@
           <% end %>
         <% end %>
       </div>
-    </div> 
-
+    </div>
+    
     <div class="col-4">
       <button type="button" class="btn" data-toggle="modal" data-target="#bookingModal">
           Book now
@@ -87,7 +87,7 @@
         <p class="text-danger mt-2">Chosen dates not available !</p>
       <% end %>
     </div>
-    
+
     <div class="col-4">
       <% unless @pet.user == current_user %>
         <button type="button" class="btn" data-toggle="modal" data-target="#reviewModal">
@@ -96,7 +96,7 @@
       <% end %>
     </div>
   </div>
-  </section>  
+  </section>
 <% end %>
 
   <section id="about-pet" class="mt-3">
