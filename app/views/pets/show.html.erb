@@ -63,7 +63,7 @@
       <% @pet.reviews.last(5).each do |review| %>
         <div class="fake-review mt-4">
           <p class="mb-1"><%= review.content %></p>
-          <div class="d-flex align-items-center">
+          <div class="rating-div d-flex align-items-center">
             <p class="text-secondary my-0 mr-2"><%= review.user.first_name %> -</p>
             <% review.rating.times do %>
               <i class="fas fa-star"></i>
