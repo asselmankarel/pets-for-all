@@ -16,8 +16,8 @@
       <p class="text-success">Confirmed<input type="checkbox" name="confirmed" id="confirmed" checked disabled class="ml-2"></p>
     <% else %>
       <div class="d-flex align-items-center">
-        <p class="text-danger">Waiting for confirmation<input type="checkbox" name="confirmed" id="confirmed" disabled class="ml-2"></p>
-        <%= link_to 'Confirm now', "/bookings/confirm/#{booking.id}" , class: "btn m-2" if booking.pet.user == current_user %>      
+        <p class="text-danger mr-2 my-0">Confirmation needed</p>
+        <%= link_to icon('fas', 'check', 'Confirm'), "/bookings/confirm/#{booking.id}", class: "text-dark border-bottom" if booking.pet.user == current_user %>      
       </div>
     <% end %>
   </div>
