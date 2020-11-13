@@ -13,7 +13,7 @@ class PetsController < ApplicationController
   def index
     if params[:query].present?
       sql_query = "name ILIKE :query OR category ILIKE :query"
-      @pets = Pet.where(sql_query, query: "%#{params[:query]}%")
+      @pets = Pet.where(sql_query, query: "%#{params[:query].singularize }%")
     else
       @pets = params.key?(:category) ? Pet.where(category: params[:category]) : Pet.all
     end
