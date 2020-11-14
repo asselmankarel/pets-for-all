@@ -19,16 +19,15 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @available_dates = set_dates
-    @review = Review.new
     @pet = Pet.find(params[:pet_id])
-    @user = current_user
     @booking = Booking.new(booking_params)
     @booking.pet = @pet
-    @booking.user = @user
+    @booking.user = current_user
     if @booking.save
       redirect_to dashboard_path
     else
+      @review = Review.new
+      @available_dates = @pet.get_available_booking_dates(10)
       render 'pets/show'
     end
   end
@@ -81,15 +80,5 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :user_id, :pet_id)
-  end
-
-  def set_dates
-    date = DateTime.now
-    date_hash = []
-    7.times do
-      date_hash << { date: date, available: true }
-      date = date.next_day(1)
-    end
-    return date_hash
   end
 end

@@ -4,7 +4,7 @@
   <% end %>
   <div class="card-booking-infos">
     <h2>
-      <%= booking.pet.name %>
+      <%= link_to booking.pet.name, pet_path(booking.pet) %>
       <%= link_to icon('fas', 'edit'), edit_pet_booking_path(booking.pet, booking) %>
       <%= link_to icon('fas', 'trash-alt'), booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' }%>
     </h2>
