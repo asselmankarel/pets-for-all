@@ -6,8 +6,7 @@ class Booking < ApplicationRecord
   validates :start_date, :end_date, presence: true
   validate :date_validation
 
-  validate :validate_other_booking_overlap, on: [:create]
-  validate :validate_other_booking_overlap_update, on: [:update]
+  validate :validate_other_booking_overlap, on: %i[create update]
 
   def period
     start_date..end_date
@@ -19,17 +18,12 @@ class Booking < ApplicationRecord
 
   private
 
-  def validate_other_booking_overlap_update
-    other_bookings = Booking.where("id != ?", id) # TODO: include pet id
-    is_overlapping = other_bookings.any? do |other_booking|
-      period.overlaps?(other_booking.period)
-    end
-    errors.add(:start_date, " is already taken") if is_overlapping
-    errors.add(:end_date, " is already taken") if is_overlapping
-  end
-
   def validate_other_booking_overlap
-    other_bookings = Booking.where(pet_id: pet_id)
+    if id
+      other_bookings = Booking.where("id != ? AND pet_id = ?", id, pet_id)
+    else
+      other_bookings = Booking.where(pet_id: pet_id)
+    end
     is_overlapping = other_bookings.any? do |other_booking|
       period.overlaps?(other_booking.period)
     end
@@ -41,7 +35,6 @@ class Booking < ApplicationRecord
     return if end_date.blank? || start_date.blank?
 
     errors.add(:end_date, "must be after the start date") if end_date < start_date
-
     errors.add(:start_date, "must be after today") if start_date < Date.today
   end
 end
