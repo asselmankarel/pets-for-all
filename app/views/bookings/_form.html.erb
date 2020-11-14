@@ -3,5 +3,5 @@
   <%= f.input :end_date, as: :date, html5: true %>
   <%= f.hidden_field :user_id %>
   <%= f.hidden_field :pet_id %>
-  <%= f.submit "Book now", class: "btn" %> <%= link_to "Cancel", pet_path(@pet), class: "btn" %>
+  <%= f.submit "Book now", class: "btn" %> <%= link_to "Cancel", pet_path(@booking.pet), class: "btn" %>
 <% end %>
