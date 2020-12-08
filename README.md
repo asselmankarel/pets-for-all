@@ -1,6 +1,6 @@
 **Rails AirBnb clone**
 
-PostgreSql
-Active storage
-Geocoding
-MapBox
+* PostgreSql
+* Active storage
+* Geocoding
+* MapBox
