@@ -2,3 +2,5 @@
 
 PostgreSql
 Active storage
+Geocoding
+MapBox
